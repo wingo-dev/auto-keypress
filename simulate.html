@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <textarea id="input_area" rows="10" cols="100"></textarea>
+    <button id="my-button">dddd</button>
+</body>
+<script>
+    const input = document.getElementById("input_area");
+    const btn = document.getElementById("my-button");
+    // Add an event listener
+    input.addEventListener("keydown", function (e) {
+        console.log(e.key); // Prints "Example of an event"
+        input.textContent += e.key;
+    });
+
+    btn.addEventListener("click", function () {
+        alert("this is automatically clicked!");
+    })
+
+    // Create the event
+    const keydownEvent = new KeyboardEvent("keydown", {
+        bubbles: true,
+        cancelable: true,
+        key: "A",
+        // code: "KeyA",
+        // charCode: 65
+    });
+
+    const clickEvent = new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    btn.click();
+    // Dispatch/Trigger/Fire the event
+    input.dispatchEvent(keydownEvent);
+    btn.dispatchEvent(clickEvent);
+</script>
+
+</html>
